@@ -66,7 +66,17 @@ source $ZSH/oh-my-zsh.sh
 # Customize to your needs...
 
 export EDITOR='vim'
-export TERM=screen-256color       # for a tmux -2 session (also for screen)
+
+
+# set screen to 256 colors for solarized
+# Older systems do not have screen-256color definied so this avoids an error
+# how to install this terminfo tbd...
+# helpful link: http://blog.sanctum.geek.nz/tag/screen-256color/
+if [ -e /usr/share/terminfo/s/screen-256color ]; then
+    export TERM='screen-256color'
+else
+    export TERM=screen-256color       # for a tmux -2 session (also for screen)
+fi
 
 # git diff --name-only --diff-filter=D -z | xargs -0 git rm --cached
 
