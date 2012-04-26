@@ -3,3 +3,4 @@
 	email = mike@herebox.org
 [core]
 	editor = vim
+    autocrlf = true
