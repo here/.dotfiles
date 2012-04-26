@@ -52,10 +52,12 @@ source $ZSH/oh-my-zsh.sh
 # Customize to your needs...
 
 export EDITOR='vim'
+export TERM=screen-256color       # for a tmux -2 session (also for screen)
 
 # git diff --name-only --diff-filter=D -z | xargs -0 git rm --cached
 
 alias gs=gss
+alias gd=git diff
 alias py=python
 alias tm="tmux -2 attach"
 
