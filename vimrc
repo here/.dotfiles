@@ -32,4 +32,4 @@ au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
 
 " Now imported with pathogen?
 "source /usr/share/vim/vim73/plugin/matchit.vim
-"source /usr/share/vim/vim70/plugin/matchit.vim
+"source /usr/share/vim/vim70/macros/matchit.vim
