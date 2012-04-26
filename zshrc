@@ -60,4 +60,5 @@ alias gs=gss
 alias gd=git diff
 alias py=python
 alias tm="tmux -2 attach"
-
+alias txz="tar -xzvf"
+alias tcz="tar -czvf"
