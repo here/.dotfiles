@@ -73,9 +73,9 @@ export EDITOR='vim'
 # how to install this terminfo tbd...
 # helpful link: http://blog.sanctum.geek.nz/tag/screen-256color/
 if [ -e /usr/share/terminfo/s/screen-256color ]; then
-    export TERM='screen-256color'
+    export TERM='screen-256color'       # for a tmux -2 session (also for screen)
 else
-    export TERM=screen-256color       # for a tmux -2 session (also for screen)
+    export TERM='screen'
 fi
 
 # git diff --name-only --diff-filter=D -z | xargs -0 git rm --cached
