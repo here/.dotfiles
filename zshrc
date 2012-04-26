@@ -80,7 +80,7 @@ fi
 
 # git diff --name-only --diff-filter=D -z | xargs -0 git rm --cached
 
-alias gs=gss
+alias gs="git show"
 alias gd="git diff"
 alias py=python
 alias tm="tmux -2 attach"
