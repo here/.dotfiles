@@ -9,14 +9,15 @@ set background=dark
 "set background=light
 colorscheme solarized
 "toggle color scheme calls togglebg function from solarized
-call togglebg#map("<f5>")
+call togglebg#map("<f4>")
 
 ":set paste
 :map <f2>   :set paste!<cr>:set paste?<cr>
 :imap <f2>   :set paste<cr>
 :map <f3>   :set number!<cr>:set number?<cr>
 :imap <f3>   :set number<cr>
-
+:map <F5> :w<cr>:!git commit -a<cr>
+:map <f6> :w<cr>:!git commit -m "comments and spacing"<cr>
 
 filetype plugin on
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
