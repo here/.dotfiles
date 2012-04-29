@@ -5,7 +5,7 @@
 # init 2012
 
 # Path to your oh-my-zsh configuration.
-ZSH=$HOME/.dotfiles/oh-my-zsh
+ZSH=$HOME/.oh-my-zsh/
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -51,7 +51,7 @@ eval `dircolors $HOME/.dotfiles/solarized/dircolors/dircolors.256dark`
 # DISABLE_LS_COLORS="true"
 
 # Uncomment following line if you want to disable autosetting terminal title.
-# DISABLE_AUTO_TITLE="true"
+DISABLE_AUTO_TITLE="true"
 
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 # COMPLETION_WAITING_DOTS="true"
@@ -63,7 +63,9 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
-# Customize to your needs...
+### end oh-my-zsh
+
+source $HOME/.aliases
 
 export EDITOR='vim'
 
@@ -78,11 +80,4 @@ else
     export TERM='screen'
 fi
 
-# git diff --name-only --diff-filter=D -z | xargs -0 git rm --cached
 
-alias gs="git show"
-alias gd="git diff"
-alias py=python
-alias tm="tmux -2 attach"
-alias txz="tar -xzvf"
-alias tcz="tar -czvf"
