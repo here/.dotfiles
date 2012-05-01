@@ -8,20 +8,12 @@
 # zsh --version
 # requires > 4.3.6
 
-rm -rf .gitconfig
-rm -rf .irssi
-rm -rf .oh-my-zsh
-rm -rf .solarized
-rm -rf .tmux.conf
-rm -rf .vim
-rm -rf .vimrc
-rm -rf .zshrc
-
-ln -s .dotfiles/gitconfig .gitconfig
-ln -s .dotfiles/irssi .irssi
-ln -s .dotfiles/oh-my-zsh .oh-my-zsh
-ln -s .dotfiles/solarized .solarized
-ln -s .dotfiles/tmux.conf .tmux.conf
-ln -s .dotfiles/vim .vim
-ln -s .dotfiles/vimrc .vimrc
-ln -s .dotfiles/zshrc .zshrc
+rm -rf .aliases;   ln -s .dotfiles/aliases .aliases
+rm -rf .gitconfig; ln -s .dotfiles/gitconfig .gitconfig
+rm -rf .irssi;     ln -s .dotfiles/irssi .irssi
+rm -rf .oh-my-zsh; ln -s .dotfiles/oh-my-zsh .oh-my-zsh
+rm -rf .solarized; ln -s .dotfiles/solarized .solarized
+rm -rf .tmux.conf; ln -s .dotfiles/tmux.conf .tmux.conf
+rm -rf .vim;       ln -s .dotfiles/vim .vim
+rm -rf .vimrc;     ln -s .dotfiles/vimrc .vimrc
+rm -rf .zshrc;     ln -s .dotfiles/zshrc .zshrc
