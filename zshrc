@@ -80,4 +80,4 @@ else
     export TERM='screen'
 fi
 
-
+cd ~
