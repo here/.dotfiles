@@ -175,14 +175,11 @@ statusbar = {
     topic_empty = " Irssi v$J - http://www.irssi.org";
 
     # all of these treated specially, they're only displayed when needed
-    lag = "{sb Lag: $0-}";
-    act = "{sb Act: $0-}";
-    more = "-- more --";
-
-    # Solarized
     lag = "{sb Lag: %m$0-%n}";
     act = "{sb Act: $0-}";
     more = "%k%3-- more --%n";
+
+    # Solarized
   };
 
   # there's two type of statusbars. root statusbars are either at the top
@@ -265,14 +262,15 @@ statusbar = {
 };
 
 hilights = (
-        { text = "YOUR_NICKNAME"; color = "%M"; nick = "yes"; word = "yes"; }
+  { text = "YOUR_NICKNAME"; color = "%M"; nick = "yes"; word = "yes"; }
 );
 settings = {
-  core = { real_name = ""; user_name = "here"; nick = "here"; };
+  core = { real_name = "hereyo"; user_name = "here"; nick = "here"; };
   "fe-text" = { actlist_sort = "refnum"; };
   "fe-common/core" = {
-        # Solarized
-        theme = "solarized-universal";
-        hilight_color = "= %R";
+    # Solarized
+    theme = "solarized-universal";
+    hilight_color = "= %R";
   };
 };
+keyboard = ( { key = "^I"; id = "next_window"; data = ""; } );
