@@ -16,8 +16,11 @@ call togglebg#map("<f4>")
 :imap <f2>   :set paste<cr>
 :map <f3>   :set number!<cr>:set number?<cr>
 :imap <f3>   :set number<cr>
-:map <F5> :w<cr>:!git commit -a<cr>
-:map <f6> :w<cr>:!git commit -am "comments and spacing"<cr>
+
+:map <F5> :w<cr>:!node %<cr>
+:map <F6> :w<cr>:!node app.js<cr>
+:map <F7> :w<cr>:!git commit -a<cr>
+":map <f7> :w<cr>:!git commit -am "comments and spacing"<cr>
 
 filetype plugin on
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
