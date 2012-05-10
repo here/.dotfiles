@@ -63,6 +63,9 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
+# turn off autocorrect
+unsetopt correct_all
+
 ### end oh-my-zsh
 
 source $HOME/.aliases
