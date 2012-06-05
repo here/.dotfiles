@@ -1,9 +1,15 @@
 #!/bin/sh
 
-# future loops
-# for f in gitconfig screenrc vim vimrc; do ln -s ~/.dotfiles/$f ~/.$f; done
+# @herebox dotfiles init script
+
+# Warning: This script will rm your existing dotfiles!
+# Use with caution.
 
 # git clone git@github.com:here/.dotfiles.git
+# ./.dotfiles/land
+
+# Run this script from ~ after cloning the git repository to setup
+# symlinks to ~/.dotfiles/ directory.
 
 # zsh --version
 # requires > 4.3.6
@@ -17,3 +23,10 @@ rm -rf .tmux.conf; ln -s .dotfiles/tmux.conf .tmux.conf
 rm -rf .vim;       ln -s .dotfiles/vim .vim
 rm -rf .vimrc;     ln -s .dotfiles/vimrc .vimrc
 rm -rf .zshrc;     ln -s .dotfiles/zshrc .zshrc
+
+
+# TODO: use loops
+# for f in gitconfig screenrc vim vimrc; do ln -s ~/.dotfiles/$f ~/.$f; done
+
+# TODO: check for existing dotfiles and confirm/exit
+
