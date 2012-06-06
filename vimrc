@@ -2,7 +2,12 @@
 ".vimrc
 
 call pathogen#infect()
+
 syntax enable
+
+" allow moving between buffers with unsaved changes
+set hidden
+
 
 "let g:solarized_termcolors=256
 set background=dark
