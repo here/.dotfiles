@@ -39,6 +39,11 @@ au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
     \| exe "normal! g'\"" | endif
     endif
 
+" ignorecase for searches
+set ignorecase
+" override ignorecase if search includes uppercase
+set smartcase
+
 " Now imported with pathogen?
 "source /usr/share/vim/vim73/plugin/matchit.vim
 "source /usr/share/vim/vim70/macros/matchit.vim
