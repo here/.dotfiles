@@ -2,7 +2,12 @@
 ".vimrc
 
 call pathogen#infect()
+
 syntax enable
+
+" allow moving between buffers with unsaved changes
+set hidden
+
 
 "let g:solarized_termcolors=256
 set background=dark
@@ -33,6 +38,11 @@ if has("autocmd")
 au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
     \| exe "normal! g'\"" | endif
     endif
+
+" ignorecase for searches
+set ignorecase
+" override ignorecase if search includes uppercase
+set smartcase
 
 " Now imported with pathogen?
 "source /usr/share/vim/vim73/plugin/matchit.vim

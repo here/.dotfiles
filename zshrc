@@ -1,6 +1,6 @@
 
 
-## mikey .zshrc
+## @herebox .zshrc
 # 
 # init 2012
 
@@ -22,12 +22,14 @@ ZSH_THEME="nanotech"
 
 
 # use solarized dircolor
+eval `dircolors $HOME/.dotfiles/solarized/dircolors/dircolors.256dark`
 # 
 # may require updated coreutils
-# error looks like this:
 # I had coreutils 5.97 from 2006
 # dircolors --version 
 # dircolors 5.97
+#
+# error looks like this:
 # dircolors: `/home/weburban/.dotfiles/solarized/dircolors/dircolors.256dark':87: unrecognized keyword RESET
 # dircolors: `/home/weburban/.dotfiles/solarized/dircolors/dircolors.256dark':91: unrecognized keyword MULTIHARDLINK
 # dircolors: `/home/weburban/.dotfiles/solarized/dircolors/dircolors.256dark':100: unrecognized keyword CAPABILITY
@@ -35,11 +37,6 @@ ZSH_THEME="nanotech"
 # after pulling the latest stable from GNU , which installed the binaries in /usr/local/bin/
 # adding /usr/local/bin/ to the path was enough to get the newer binaries
 #
-eval `dircolors $HOME/.dotfiles/solarized/dircolors/dircolors.256dark`
-
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -63,12 +60,15 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
+# turn off autocorrect
+unsetopt correct_all
+
 ### end oh-my-zsh
 
+# load aliases
 source $HOME/.aliases
 
 export EDITOR='vim'
-
 
 # set screen to 256 colors for solarized
 # Older systems do not have screen-256color definied so this avoids an error
@@ -80,4 +80,5 @@ else
     export TERM='screen'
 fi
 
+# cd to ~
 cd ~
