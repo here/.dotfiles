@@ -6,12 +6,14 @@ here/.dotfiles
 
 I enjoy working with:
 
-* oh-my-zsh (fancy zsh shell)
-* tmux (screen multiplexer)
-* vim (text editor)
+* vim, sublime (text editors)
 * git (source version control)
+* tmux (screen multiplexer)
 * irssi (irc)
 * solarized (color scheme)
+* oh-my-zsh (fancy zsh shell)
+
+Includes a shell script 'land' which deletes existing dotfiles and sets up symlinks.
 
 Feedback encouraged!
 
