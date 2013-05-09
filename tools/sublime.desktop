@@ -1,0 +1,16 @@
+#!/usr/bin/env xdg-open
+# 
+# Useful in creating shortcuts in window manager
+# ~/.local/share/applications/sublime.desktop
+
+[Desktop Entry]
+Name=Sublime Text
+GenericName=text
+Comment=textextextextext
+Exec="/home/here/bin/sublime_text" %F
+Terminal=false
+Type=Application
+StartupNotify=true
+MimeType=text/plain;
+Icon=/home/tom/images/sublime.png
+Categories=TextEditor;Development;Utility;
