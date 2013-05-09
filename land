@@ -24,11 +24,10 @@ rm -rf .vim;       ln -s .dotfiles/vim .vim
 rm -rf .vimrc;     ln -s .dotfiles/vimrc .vimrc
 rm -rf .zshrc;     ln -s .dotfiles/zshrc .zshrc
 
-rm -rf ~/.config/sublime-text-2
-ln -s ~/.dotfiles/sublime-text-2 .config/sublime-text-2
+rm -rf .config/sublime-text-2
+ln -s .dotfiles/sublime-text-2 .config/sublime-text-2
 
 # TODO: use loops
 # for f in gitconfig screenrc vim vimrc; do ln -s ~/.dotfiles/$f ~/.$f; done
 
 # TODO: check for existing dotfiles and confirm/exit
-
