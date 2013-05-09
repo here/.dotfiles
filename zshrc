@@ -85,3 +85,6 @@ cd ~
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+### Unset gnome-keyring to avoid ssh warning in terminals on LXDE
+unset GNOME_KEYRING_CONTROL
