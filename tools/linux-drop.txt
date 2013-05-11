@@ -1,0 +1,540 @@
+
+# basic utils
+sudo apt-get install vim tmux curl git htop
+
+# zsh and .dotfiles
+sudo apt-get install zsh
+git clone https://github.com/here/.dotfiles.git
+.dotfiles/land
+chsh -s /bin/zsh $USER
+
+# dropbox
+# python-gpgme needed for binary signatures ?
+sudo apt-get install python-gpgme
+sudo apt-key adv --keyserver pgp.mit.edu --recv-keys 5044912E
+sudo add-apt-repository "deb http://linux.dropbox.com/ubuntu $(lsb_release -sc) main"
+
+# sublime-text
+sudo add-apt-repository ppa:webupd8team/sublime-text-2
+sudo apt-get update
+sudo apt-get install sublime-text
+
+--------------------
+
+New 12.04 LTS
+
+# linode: stackscript
+# ec2: user data
+#
+# http://herebox.org
+#
+# lish: 
+# http://www.linode.com/wiki/index.php/LISH
+# http://library.linode.com/troubleshooting/using-lish-the-linode-shell
+#
+
+# ec2:
+# http://docs.amazonwebservices.com/AWSEC2/latest/UserGuide/putty.html
+# Add SSH rule for IP on port 22
+# connect using ssh and public key
+# user: ubuntu
+
+### update system ###
+
+# get security updates and install them.
+apt-get update
+apt-get upgrade --show-upgraded --assume-yes
+
+# possible reboot #
+
+
+### set editor ###
+
+sudo export EDITOR="vim"
+sudo echo "export EDITOR=vim" >> /etc/profile.d/editor.sh
+# doesn't work for some reason, worked with sudo -i
+
+
+### create a sudoer ###
+
+# add user #
+# interactive setup 
+# add to admin group
+adduser mike                       # --uid 121
+usermod -a -G admin mike
+
+# lower level, -m creates home directory
+# /usr/sbin/useradd -m here   # -u 121
+
+# disconnect , reconnect , run tmux -2
+
+# add user or group to sudoers , unnecessary if admin group works
+# visudo
+# /etc/sudoyers
+
+
+### system config ###
+
+# set the hostname
+sudo echo "hat" > /etc/hostname
+sudo hostname -F /etc/hostname
+
+# set ip #
+# vim /etc/hosts
+# 127.0.0.1                       localhost.localdomain    localhost
+# 50.112.200.68
+echo "50.112.200.68 chewtoy.uhgod.com chewtoy" >> /etc/hosts
+echo "50.116.5.94 hat.wherebox.com hat" >> /etc/hosts
+echo "2600:3c01::f03c:91ff:fedf:050c hat.wherebox.com hat" >> /etc/hosts
+
+# set timezone
+# dpkg-reconfigure tzdata # interactive
+sudo ln -sf /usr/share/zoneinfo/US/Pacific /etc/localtime
+
+# make new ssh key for new user #
+ssh-keygen -t rsa -C "chewy@toybox.com"
+cat ~/.ssh/id_rsa.pub
+
+# enable password auth #
+# be sure to set root passwd
+# PasswordAuthentication "no" -> "yes"
+vim /etc/ssh/sshd_config
+sudo reload ssh
+
+# (old) # /etc/init.d/ssh reload
+
+
+### useful tricks and locations ###
+
+# install man pages
+# sudo tar -xjv -C /usr/local/share/man -f git-manpages-1.7.3.5.tar.bz2
+
+# consider disabling crash logger /etc/default/whoopsie
+
+## environtment ##
+
+### build-essential ###
+
+# includes make, gcc, etc
+sudo apt-get install build-essential
+sudo apt-get zip unzip
+sudo apt-get lynx 
+# heroku?
+
+# oh-my-zsh
+# see zshrc notes
+apt-get install irssi 
+apt-get tmux 1.6
+
+### sublime-text ###
+
+# mv to opt
+# sudo ln -s /opt/sublime-text-2/sublime_text /usr/bin/sublime
+# for defaults
+# sudo vim /usr/share/applications/defaults.list
+# (replace gedit.desktop with sublime.desktop)
+# for Unity launcher
+# sudo vim /usr/share/applications/sublime.desktop
+# http://www.technoreply.com/how-to-install-sublime-text-2-on-ubuntu-12-04-unity/
+# replace gedit.desktop with sublime.desktop
+
+
+### git ###
+
+sudo apt-get install git --assume-yes
+
+# configure git
+git config --global user.name "aint here"
+git config --global user.email "mike@herebox.org"
+git config --global branch.autosetuprebase always
+
+# git config --global push.default tracking
+# git config --global push.default matching
+# git config --global push.default current
+# git push -u unfuddle master # set upstream for a new branch.
+
+# git help config :
+# matching - push all matching branches. All branches having the same name in both ends are considered to be matching. This is the default.
+# tracking - push the current branch to its upstream branch.
+# current - push the current branch to a branch of the same name.
+
+# git checkout -t origin/feature
+# creates and checks out "feature" branch that tracks "origin/feature"
+
+# git rebase HEAD feature && git rebase HEAD @{-2}
+# rebases "feature" to "master" and merges it in to master
+
+# git pull --rebase
+
+# e.g. if on branch "master": performs a `git fetch origin`,
+# then `git rebase origin/master`
+
+# Because branch merges in git are recorded with a merge commit, they are supposed to be meaningful—for example, to indicate when a feature has been merged to a release branch. However, during a regular daily workflow where several team members sync a single branch often, the timeline gets polluted with unnecessary micro-merges on regular git pull. Rebasing ensures that the commits are always re-applied so that the history stays linear.
+
+# You can configure certain branches to always do this without the --rebase flag:
+# make `git pull` on master always use rebase
+# git config branch.master.rebase true
+
+# setup rebase for every tracking branch
+# git config --global branch.autosetuprebase always
+
+# git show :/fix
+# shows the last commit which has the word "fix" in its message
+
+# git show :/^Merge
+# shows the last merge commit
+
+
+
+
+### dotfiles ###
+
+# clone dotfiles and run landing (ln) script 
+git clone git@github.com:here/.dotfiles.git ~/.dotfiles
+./.dotfiles/land
+
+# link root vimrc and aliases to user
+sudo ln -s ~here/.vimrc ~root
+sudo ln -s ~here/.aliases ~root
+echo "source $HOME/.aliases" >> ~/.zshrc
+
+
+### zsh/oh-my-zsh ###
+# 
+# oh-my-zsh
+# https://github.com/robbyrussell/oh-my-zsh
+# 
+# currently included in dotfiles repository
+# need to fix that
+# git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+
+sudo apt-get install zsh
+# sudo chsh -s /bin/zsh root
+# sudo chsh -s /bin/zsh here
+
+
+### vim ###
+
+# May skip (dotfiles)
+# /etc/vim/vimrc.local
+# plugin: matchit.vim 
+# http://www.vim.org/scripts/script.php?script_id=39
+mkdir -p ~/.vim/autoload ~/.vim/bundle; \
+curl -so ~/.vim/autoload/pathogen.vim \
+    https://raw.github.com/tpope/vim-pathogen/HEAD/autoload/pathogen.vim
+
+
+### tmux ###
+
+# May skip (dotfiles)
+# tmux 1.5 is missing many features, depricated keywords
+# set-window-option -g allow-rename
+# window-status-activity (1.6) vs window-status-alert (1.5)
+# apt-get tmux 1.6
+
+
+### irssi ###
+
+sudo apt-get install irssi --assume-yes
+
+
+### LAMP ###
+
+# https://help.ubuntu.com/community/Tasksel
+#apt-get install lamp-server
+apt-get install apache2
+apt-get install mysql
+apt-get install php5 php5-gd php5-mysql php5-curl php5-cli php5-cgi php5-dev
+sudo apt-get install phpmyadmin
+
+# enable mod-rewrite
+# sudo ln -s ../mods-available/rewrite.load /etc/apache2/mods-enabled/
+# or
+# sudo a2enmod rewrite 
+# *also* AllowOverride All in sites-available definition
+
+mysql -u root -p
+CREATE DATABASE dbwordpress;
+CREATE USER wordpressuser;
+SET PASSWORD FOR wordpressuser = PASSWORD("wppassword");
+GRANT ALL PRIVILEGES ON dbwordpress.* TO wordpressuser@localhost IDENTIFIED BY ‘wppassword’;
+FLUSH PRIVILEGES;
+exit
+
+
+mysqld_safe --init-file=init --skip-networking &
+
+### mysql ###
+
+# chewdb
+
+### php ###
+
+### node.js ###
+
+# http://markmims.com/cloud/2011/09/07/node-mongo-ubuntu.html
+# http://nodejs.org/docs/v0.6.15/api/
+
+# installs older version
+# sudo apt-get install nodejs npm --assume-yes
+
+# better up to date
+# sudo add-apt-repository ppa:chris-lea/node.js
+# sudo apt-get update
+# sudo apt-get install nodejs
+# if broken try first:
+# sudo apt-get install python-software-properties python g++ make
+
+
+# export PATH=$PATH:/opt/node/bin (fix path) in global profile?
+# npm install socket.io express zombie request
+
+# zombie css selectors
+# http://zombie.labnotes.org/selectors
+# http://www.commonjs.org/
+
+# npm install -d
+
+#
+# https://dev.twitter.com/docs/security/using-ssl
+twitter:RC4
+--cipher rc4
+# curl -d @post https://stream.twitter.com/1/statuses/filter.json -uherebox:euhdoosf --verbose
+# curl -3 -d @post https://stream.twitter.com/1/statuses/filter.json -uherebox:euhdoosf --verbose
+
+
+### openssl ###
+
+# https://help.ubuntu.com/community/OpenSSL
+# https://help.ubuntu.com/8.04/serverguide/certificates-and-security.html
+
+# misc / trivia
+
+# benchmark computer
+# openssl speed
+
+# check available versions
+# sudo apt-cache search libssl | grep SSL
+
+# setup:
+
+# setup working evironment
+# ~/myCA : contains CA certificate, certificates database, generated certificates, keys, and requests
+# ~/myCA/signedcerts : contains copies of each signed certificate 
+# ~/myCA/private : contains the private key
+
+cd && mkdir -p myCA/signedcerts && mkdir myCA/private && cd myCA
+
+# create an initial certificate database in the ~/myCA subdirectory
+echo '01' > serial  && touch index.txt
+
+# setup caconfig.cnf (see link)
+vim ~/myCA/caconfig.cnf
+
+export OPENSSL_CONF=~/myCA/caconfig.cnf
+
+# generate the CA certificate and key
+openssl req -x509 -newkey rsa:2048 -out cacert.pem -outform PEM -days 1825
+
+# optional: Strip the certificate from all its text to keep only the -CERTIFICATE- section to create a crt
+openssl x509 -in cacert.pem -out cacert.crt
+
+# Now create self-signed cert
+vim ~/myCA/wherebox.server.cnf (see link)
+export OPENSSL_CONF=~/myCA/wherebox.server.cnf
+
+# generate the certificate and key
+openssl req -newkey rsa:1024 -keyout tempkey.pem -keyform PEM -out tempreq.pem -outform PEM
+
+#  translate the temporary private key into an unencrypted key by using the following command
+openssl rsa < tempkey.pem > server_key.pem
+
+# or leave encrypted by renaming
+# mv tempkey.pem server_key.pem
+
+# now sign the cert
+export OPENSSL_CONF=~/myCA/caconfig.cnf
+openssl ca -in tempreq.pem -out server_crt.pem
+
+# delete temp cert and key
+rm -f tempkey.pem && rm -f tempreq.pem
+
+# Congratulations! You now have a self-signed server application certificate, and key pair:
+# server_crt.pem : Server application certificate file
+# server_key.pem : Server application key file
+
+# You can install the key file server.key and certificate file server.crt, 
+# or the certificate file issued by your # CA, by running following 
+# commands at a terminal prompt:
+
+# sudo cp server.crt /etc/ssl/certs
+# sudo cp server.key /etc/ssl/private
+
+
+### ubuntu 12 nx remote desktop and xrdp ###
+
+# sudo apt-get install ubuntu-desktop
+
+# best recent try ive seen
+# http://activeintelligence.org/blog/archive/remote-graphical-linux-desktop-on-ec2/
+# also nomachine alternative : http://opennx.net/
+
+# why not to run gnome desktop on the server : 
+# http://askubuntu.com/questions/23282/how-can-i-connect-to-my-amazon-ec2-server-using-a-desktop-client
+
+# http://askubuntu.com/questions/130110/tightvncserver-on-ubuntu-12-04-server-with-ubuntu-desktop-installed-no-unity
+
+
+
+### redis ###
+
+sudo apt-get install redis-server
+
+sudo redis-server /etc/redis/redis.conf
+# http://socket.io/
+
+# cp /opt/redis/redis.conf.default /opt/redis/redis.conf
+
+# http://masonoise.wordpress.com/2010/01/30/comparing-mongodb-and-redis-part-1/
+# http://masonoise.wordpress.com/2010/02/02/comparing-mongodb-and-redis-part-2/
+
+
+### nginx ###
+
+# http://library.linode.com/web-servers/nginx
+# http://library.linode.com/lemp-guides
+                         
+# check hostname is working
+# $ hostname
+# hat
+# $ hostname -f
+# hat.wherebox.com
+
+# sudo add-apt-repository ppa:nginx/stable
+# sudo apt-get update
+# sudo apt-get install nginx
+
+# default global config is fine.
+# /etc/nginx/nginx.conf
+
+# setup new site config file.
+sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/wherebox.org
+sudo vim /etc/nginx/sites-available/wherebox.org
+
+# line 21: set ipv6only=on
+# listen [::]:80 ipv6only=on default_server;
+# line 24: root /usr/share/nginx/wherebox.org;
+# line 28: server_name localhost;
+# line 29: server_name wherebox.org;
+
+# add a symlink from sites-enabled to the config file in sites-available
+sudo ln -s /etc/nginx/sites-available/wherebox.org /etc/nginx/sites-enabled
+
+mkdir ~/code/nginx
+sudo ln -s ~/code/nginx /usr/share/nginx/
+
+/etc/init.d/nginx start
+/etc/init.d/nginx reload
+
+# echo "oy" >> ~/code/nginx/index.html
+
+
+---------
+
+## mongodb ##
+
+# http://library.linode.com/databases/mongodb/ubuntu-10.10-maverick
+
+apt-get install mondodb
+# sudo mongod --config=/etc/mongodb.conf
+# sudo npm install mongojs
+
+# http://markmims.com/cloud/2011/09/07/node-mongo-ubuntu.html
+
+## postgres + postgis ##
+
+## Twitter ##
+
+Your OAuth Access Token: 14400137-OC7BE7wtxwjs2zwGrtrsaPoozIIwLOlZKyLnqT9MR
+Your OAuth Token Secret: SZODF2QrBcwbyZSlvNqC7I5AI1QXhEmsqlpVbVWQCE
+
+### security ###
+
+# /etc/logrotate.d/luna
+
+/home/luna/app/shared/log/*.log {
+  daily
+  missingok
+  rotate 30
+  compress
+  delaycompress
+  copytruncate
+}
+
+### monitor / test ###
+
+apt-get install monit
+vim /etc/monit/monitrc
+
+###
+# General notes about working with installation etc
+#
+# How to build from source:
+# wget ...
+# tar -xzvf ...                                
+# cd ...
+# ./configure                                                     
+# ./make && make install
+
+
+### ruby ###
+
+# http://www.ruby-lang.org/en/downloads/
+# curl -O http://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.3-p194.tar.gz
+# cd ruby-1.9.3-p194.tar.gz
+
+
+# includes libs and dev files to install rubygems.
+# includes rubygems
+# sudo apt-get install ruby-full
+
+
+#####
+# Node notes
+
+Comprehensive list of Node.js/Express response methods and when they must be called:
+Response must be in Head and remains in Head:
+
+res.writeContinue()
+res.statusCode = 404
+res.setHeader(name, value)
+res.getHeader(name)
+res.removeHeader(name)
+res.header(key[, val]) (Express only)
+res.charset = 'utf-8' (Express only; only affects Express-specific methods)
+res.contentType(type) (Express only)
+Response must be in Head and becomes Body:
+
+res.writeHead(statusCode, [reasonPhrase], [headers])
+Response can be in either Head/Body and remains in Body:
+
+res.write(chunk, encoding='utf8')
+Response can be in either Head/Body and becomes Finished:
+
+res.end([data], [encoding])
+Response can be in either Head/Body and remains in its current state:
+
+res.addTrailers(headers)
+Response must be in Head and becomes Finished:
+
+return next([err]) (Connect/Express only)
+Any exceptions within middleware function(req, res, next) (Connect/Express only)
+res.send(body|status[, headers|status[, status]]) (Express only)
+res.attachment(filename) (Express only)
+res.sendfile(path[, options[, callback]]) (Express only)
+res.json(obj[, headers|status[, status]]) (Express only)
+res.redirect(url[, status]) (Express only)
+res.cookie(name, val[, options]) (Express only)
+res.clearCookie(name[, options]) (Express only)
+res.render(view[, options[, fn]]) (Express only)
+res.partial(view[, options]) (Express only) 
