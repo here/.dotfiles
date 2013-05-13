@@ -44,6 +44,9 @@ set ignorecase
 " override ignorecase if search includes uppercase
 set smartcase
 
+" treat *.json files as javascript
+autocmd BufNewFile,BufRead *.json set ft=javascript
+
 " Now imported with pathogen?
 "source /usr/share/vim/vim73/plugin/matchit.vim
 "source /usr/share/vim/vim70/macros/matchit.vim
