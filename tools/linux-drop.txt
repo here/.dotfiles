@@ -19,6 +19,32 @@ sudo add-apt-repository ppa:webupd8team/sublime-text-2
 sudo apt-get update
 sudo apt-get install sublime-text
 
+# build-essental
+sudo apt-get install build-essential
+
+# python virtualenv includes pip, setuptools
+# virtualenv <name>
+# source <name>/bin/activate
+sudo apt-get install python-virtualenv
+
+# mongodb
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10
+sudo add-apt-repository "deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen"
+sudo apt-get update
+sudo apt-get install mongodb-10gen
+
+# nodejs
+sudo add-apt-repository ppa:chris-lea/node.js
+sudo apt-get update
+sudo apt-get install nodejs
+
+# jq
+
+# ruby and rake
+sudo apt-get install rake
+# documenting library for jq's man pages
+sudo gem install bonsai
+
 --------------------
 
 New 12.04 LTS
