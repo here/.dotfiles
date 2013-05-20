@@ -45,6 +45,46 @@ sudo apt-get install rake
 # documenting library for jq's man pages
 sudo gem install bonsai
 
+# php
+apt-get install php5 php5-cgi php5-fpm php5-curl
+
+# replace the unix socket with a specific port in
+# /etc/php5/fpm/pool.d/www.conf
+;listen = /var/run/php5-fpm.sock
+;listen = 127.0.0.1:9000
+
+# LAMP
+# -------
+sudo apt-get install apache2
+sudo a2enmod rewrite
+sudo service apache2 restart
+
+# apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.1.1 for ServerName
+# sudo vim /etc/apache2/conf.d/fqdn
+# ServerName localhost
+
+# php mod
+sudo apt-get install libapache2-mod-php5
+sudo a2enmod php5
+sudo service apache2 restart
+
+# mysql
+sudo apt-get install mysql-server libapache2-mod-auth-mysql php5-mysql
+# create database dbname;
+# GRANT ALL PRIVILEGES ON *.* TO 'user'@'localhost' IDENTIFIED BY 'password' WITH GRANT OPTION;
+
+# --------
+### LXDE
+
+# shutter, includes imagemagick
+sudo add-apt-repository ppa:shutter/ppa
+sudo apt-get install shutter
+
+# keyboard bindings
+# ~/.config/openbox/lubuntu-rc.xml
+# or maybe sudo apt-get install compizconfig-settings-manager
+
+
 --------------------
 
 New 12.04 LTS
