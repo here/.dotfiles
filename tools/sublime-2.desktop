@@ -1,12 +1,13 @@
 #!/usr/bin/env xdg-open
+# place in /usr/share/applications/
 [Desktop Entry]
-Name=Sublime Text
+Name=sublime-text-2
 GenericName=text
 Comment=textextextextext
-Exec="/home/toor/bin/sublime/sublime_text" %F
+Exec="/opt/sublime-text-2/sublime_text" %F
 Terminal=false
 Type=Application
 StartupNotify=true
 MimeType=text/plain;
-Icon=/home/toor/bin/sublime/Icon/32x32/sublime_text.png
+Icon=/opt/sublime-text-2/Icon/32x32/sublime_text.png
 Categories=TextEditor;Development;Utility;
