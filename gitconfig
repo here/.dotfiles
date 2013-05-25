@@ -4,3 +4,5 @@
 [core]
 	editor = vim
     autocrlf = input
+[push]
+	default = upstream
