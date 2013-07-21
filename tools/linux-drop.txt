@@ -26,6 +26,8 @@ sudo apt-get install build-essential
 # virtualenv <name>
 # source <name>/bin/activate
 sudo apt-get install python-virtualenv
+# then may have to find the install and run for global
+# sudo python setup.py install
 
 # mongodb
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10
@@ -62,6 +64,8 @@ sudo service apache2 restart
 # apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.1.1 for ServerName
 # sudo vim /etc/apache2/conf.d/fqdn
 # ServerName localhost
+# sudo vim /etc/apache2/ports.conf
+# NameVirtualHost *:443 (and use *:443 rather than _default_:443 in VirtualHost def)
 
 # php mod
 sudo apt-get install libapache2-mod-php5
@@ -84,6 +88,14 @@ sudo apt-get install shutter
 # ~/.config/openbox/lubuntu-rc.xml
 # or maybe sudo apt-get install compizconfig-settings-manager
 
+# w3m text based browser.
+sudo apt-get install w3m
+
+# ---------
+### productivity apps
+# skype
+# sudo add-apt-repository "deb http://archive.canonical.com/ $(lsb_release -sc) partner"
+sudo apt-get install skype
 
 --------------------
 
