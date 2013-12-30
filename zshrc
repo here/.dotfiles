@@ -70,6 +70,9 @@ source $HOME/.aliases
 
 export EDITOR='vim'
 
+# do not record to history commands starting with space
+export HISTCONTROL=ignorespace
+
 # set screen to 256 colors for solarized
 # Older systems do not have screen-256color definied so this avoids an error
 # how to install this terminfo tbd...
