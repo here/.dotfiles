@@ -5,4 +5,4 @@
 	editor = vim
     autocrlf = input
 [push]
-	default = upstream
+	default = current
