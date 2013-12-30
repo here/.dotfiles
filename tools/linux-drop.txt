@@ -2,6 +2,9 @@
 # basic utils
 sudo apt-get install vim tmux curl git htop
 
+# check installed packageds
+# dpkg --list | grep <name>
+
 # zsh and .dotfiles
 sudo apt-get install zsh
 git clone https://github.com/here/.dotfiles.git
@@ -202,7 +205,6 @@ sudo apt-get lynx
 # oh-my-zsh
 # see zshrc notes
 apt-get install irssi 
-apt-get tmux 1.6
 
 ### sublime-text ###
 
@@ -262,6 +264,10 @@ git config --global branch.autosetuprebase always
 # git show :/^Merge
 # shows the last merge commit
 
+# find dangling commits 
+# git fsck 2>&1 | awk '/dangling commit/ {print $3}' | xargs -n1 git log -1
+
+
 
 
 
@@ -304,11 +310,17 @@ curl -so ~/.vim/autoload/pathogen.vim \
 
 ### tmux ###
 
-# May skip (dotfiles)
+# http://tmux.sourceforge.net/
 # tmux 1.5 is missing many features, depricated keywords
-# set-window-option -g allow-rename
 # window-status-activity (1.6) vs window-status-alert (1.5)
-# apt-get tmux 1.6
+# see gist for 1.6 https://gist.github.com/cloud8421/2204072
+# or DIY :
+# sudo apt-get install build-essential
+# sudo apt-get install libevent-1.4-2 libevent-core-1.4-2 libevent-extra-1.4-2 libevent-dev
+# sudo apt-get install libncurses5-dev
+# get tmux 1.6 http://tmux.sourceforge.net/
+# http://downloads.sourceforge.net/project/tmux/tmux/tmux-1.6/tmux-1.6.tar.gz
+# 1.8 fails on make, requires newer libevent (Use either libevent 1.4.14b, or perhaps more preferrably, 2.0.20.)
 
 
 ### irssi ###
@@ -549,6 +561,16 @@ Your OAuth Token Secret: SZODF2QrBcwbyZSlvNqC7I5AI1QXhEmsqlpVbVWQCE
   copytruncate
 }
 
+### exfat ###
+
+# exfat support
+# http://askubuntu.com/questions/100278/how-do-i-install-and-mount-an-exfat-partition
+
+sudo apt-add-repository ppa:relan/exfat
+sudo apt-get update
+sudo apt-get install exfat-fuse exfat-utils
+
+
 ### monitor / test ###
 
 apt-get install monit
@@ -575,6 +597,12 @@ vim /etc/monit/monitrc
 # includes libs and dev files to install rubygems.
 # includes rubygems
 # sudo apt-get install ruby-full
+
+
+#####
+# Android notes
+
+# Settings → Storage → ⋮ → USB-connection to computer → MTP media device ☑
 
 
 #####
