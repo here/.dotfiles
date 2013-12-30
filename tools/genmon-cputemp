@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# used with xfce4-genmon-plugin to show cputemp in panel
+# tooltip shows other info from acpi
+
+#declare -i cpuStats
+cpuStats=$(acpi -batc)
+echo "<txt>"$(cat /sys/class/thermal/thermal_zone0/temp | cut -b1-2)"</txt>"
+echo '<tool>'
+acpi -batc
+echo '</tool>'
