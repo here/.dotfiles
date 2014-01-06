@@ -22,24 +22,6 @@ ZSH=$HOME/.oh-my-zsh/
 #ZSH_THEME="random"
 ZSH_THEME="nanotech"
 
-
-# use solarized dircolor
-eval `dircolors $HOME/.dotfiles/solarized/dircolors/dircolors.256dark`
-# 
-# may require updated coreutils
-# I had coreutils 5.97 from 2006
-# dircolors --version 
-# dircolors 5.97
-#
-# error looks like this:
-# dircolors: `/home/weburban/.dotfiles/solarized/dircolors/dircolors.256dark':87: unrecognized keyword RESET
-# dircolors: `/home/weburban/.dotfiles/solarized/dircolors/dircolors.256dark':91: unrecognized keyword MULTIHARDLINK
-# dircolors: `/home/weburban/.dotfiles/solarized/dircolors/dircolors.256dark':100: unrecognized keyword CAPABILITY
-# 
-# after pulling the latest stable from GNU , which installed the binaries in /usr/local/bin/
-# adding /usr/local/bin/ to the path was enough to get the newer binaries
-#
-
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
 
@@ -87,17 +69,31 @@ export HISTCONTROL=ignorespace
 # Older systems do not have screen-256color definied so this avoids an error
 # how to install this terminfo tbd...
 # helpful link: http://blog.sanctum.geek.nz/tag/screen-256color/
-if [ -e /usr/share/terminfo/s/screen-256color ]; then
-    export TERM='screen-256color'       # for a tmux -2 session (also for screen)
-else
-    export TERM='screen'
-fi
+#if [ -e /usr/share/terminfo/s/screen-256color ]; then
+#    export TERM='screen-256color'       # for a tmux -2 session (also for screen)
+#else
+#    export TERM='screen'
+#fi
 
 # cd to ~
 cd ~
 
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-
 ### Unset gnome-keyring to avoid ssh warning in terminals on LXDE
 unset GNOME_KEYRING_CONTROL
+
+# use solarized dircolor
+eval `dircolors $HOME/.dotfiles/solarized/dircolors/dircolors.256dark`
+# 
+# may require updated coreutils
+# I had coreutils 5.97 from 2006
+# dircolors --version 
+# dircolors 5.97
+#
+# error looks like this:
+# dircolors: `/home/weburban/.dotfiles/solarized/dircolors/dircolors.256dark':87: unrecognized keyword RESET
+# dircolors: `/home/weburban/.dotfiles/solarized/dircolors/dircolors.256dark':91: unrecognized keyword MULTIHARDLINK
+# dircolors: `/home/weburban/.dotfiles/solarized/dircolors/dircolors.256dark':100: unrecognized keyword CAPABILITY
+# 
+# after pulling the latest stable from GNU , which installed the binaries in /usr/local/bin/
+# adding /usr/local/bin/ to the path was enough to get the newer binaries
+#
