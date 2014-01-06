@@ -1,8 +1,8 @@
 [user]
-	name = aint here
-	email = mike@herebox.org
+    name = aint here
+    email = mike@herebox.org
 [core]
-	editor = vim
+    editor = vim
     autocrlf = input
 [push]
 	default = current
