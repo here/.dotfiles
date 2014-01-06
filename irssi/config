@@ -269,7 +269,9 @@ settings = {
   "fe-text" = { actlist_sort = "refnum"; };
   "fe-common/core" = {
     # Solarized
-    theme = "solarized-universal";
+    # theme = "solarized-universal";
+    # theme = "revolutionary";
+    theme = "ash";
     hilight_color = "= %R";
   };
 };
