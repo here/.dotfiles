@@ -1,20 +1,21 @@
 
 ".vimrc
 
-call pathogen#infect()
-
 syntax enable
 
 " allow moving between buffers with unsaved changes
 set hidden
 
+" solarized is awesome but can't get it working
+" with oh-my-zsh+tmux+vim -> copy paste
+"set t_Co=256
 
 "let g:solarized_termcolors=256
-set background=dark
+"set background=dark
 "set background=light
-colorscheme solarized
+"colorscheme solarized
 "toggle color scheme calls togglebg function from solarized
-call togglebg#map("<f4>")
+"call togglebg#map("<f4>")
 
 ":set paste
 :map <f2>   :set paste!<cr>:set paste?<cr>
@@ -32,11 +33,12 @@ set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 set autoindent smartindent
 ":set cindent
 
-" Uncomment the following to have Vim jump to the last position when
-" reopening a file
+" Restore last buffer cursor position on reload
+" May also be achieved by simply using either `" or '"
+" http://stackoverflow.com/questions/774560/in-vim-how-do-i-get-a-file-to-open-at-the-same-line-number-i-closed-it-at-last
 if has("autocmd")
 au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
-    \| exe "normal! g'\"" | endif
+    \| exe "normal! g`\"" | endif
     endif
 
 " ignorecase for searches
@@ -47,6 +49,7 @@ set smartcase
 " treat *.json files as javascript
 autocmd BufNewFile,BufRead *.json set ft=javascript
 
-" Now imported with pathogen?
+" Better matching including HTML (divs, etc)
+source /usr/share/vim/addons/plugin/matchit.vim
 "source /usr/share/vim/vim73/plugin/matchit.vim
 "source /usr/share/vim/vim70/macros/matchit.vim
