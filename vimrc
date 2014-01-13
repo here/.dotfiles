@@ -28,6 +28,10 @@ set hidden
 :map <F7> :w<cr>:!git commit -a<cr>
 ":map <f7> :w<cr>:!git commit -am "comments and spacing"<cr>
 
+" Allow saving of files as sudo when I forgot to start vim using sudo.
+" Leaving commented out until I learn the original well enough
+" cmap w!! w !sudo tee > /dev/null %
+
 filetype plugin on
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 set autoindent smartindent
