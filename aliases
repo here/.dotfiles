@@ -4,5 +4,6 @@ alias gs="git show"
 alias gd="git diff"
 alias py=python
 alias tm="tmux -2 attach"
+alias tm2="tmux -2"
 alias txz="tar -xzvf"
 alias tcz="tar -czvf"
