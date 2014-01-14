@@ -18,6 +18,7 @@ rm -rf .aliases;   ln -s .dotfiles/aliases .aliases
 rm -rf .gitconfig; ln -s .dotfiles/gitconfig .gitconfig
 rm -rf .irssi;     ln -s .dotfiles/irssi .irssi
 rm -rf .oh-my-zsh; ln -s .dotfiles/oh-my-zsh .oh-my-zsh
+rm -rf .inputrc;   ln -s .dotfiles/inputrc .inputrc
 rm -rf .solarized; ln -s .dotfiles/solarized .solarized
 rm -rf .tmux.conf; ln -s .dotfiles/tmux.conf .tmux.conf
 rm -rf .vim;       ln -s .dotfiles/vim .vim
