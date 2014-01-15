@@ -62,6 +62,9 @@ source $HOME/.aliases
 
 export EDITOR='vim'
 
+# set shell editing mode to vi
+set -o vi
+
 # do not record to history commands starting with space
 export HISTCONTROL=ignorespace
 
