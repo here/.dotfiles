@@ -68,6 +68,9 @@ set -o vi
 # do not record to history commands starting with space
 export HISTCONTROL=ignorespace
 
+# awscli config
+export AWS_CONFIG_FILE=$HOME/.aws-config
+
 # set screen to 256 colors for solarized
 # Older systems do not have screen-256color definied so this avoids an error
 # how to install this terminfo tbd...
