@@ -3,6 +3,8 @@
 alias gs="git show"
 alias gd="git diff"
 alias py=python
+# alias to use ipython within current virtual environment
+alias ipy="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
 alias tm="tmux -2 attach"
 alias tm2="tmux -2"
 alias txz="tar -xzvf"
