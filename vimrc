@@ -54,6 +54,6 @@ set smartcase
 autocmd BufNewFile,BufRead *.json set ft=javascript
 
 " Better matching including HTML (divs, etc)
-source /usr/share/vim/addons/plugin/matchit.vim
+"source /usr/share/vim/addons/plugin/matchit.vim
 "source /usr/share/vim/vim73/plugin/matchit.vim
 "source /usr/share/vim/vim70/macros/matchit.vim
