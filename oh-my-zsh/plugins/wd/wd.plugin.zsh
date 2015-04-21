@@ -1,9 +1,11 @@
 #!/bin/zsh
 
-# WARP
-# ====
+# WARP DIRECTORY
+# ==============
 # oh-my-zsh plugin
 #
 # @github.com/mfaerevaag/wd
 
-alias wd='. $ZSH/plugins/wd/wd.sh'
+wd() {
+    . $ZSH/plugins/wd/wd.sh
+}
