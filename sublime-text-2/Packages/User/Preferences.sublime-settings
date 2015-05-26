@@ -1,8 +1,14 @@
-// Settings in here override those in "Default/Preferences.sublime-settings", and
-// are overridden in turn by file type specific settings.
+// Settings in here override those in "Default/Preferences.sublime-settings",
+// and are overridden in turn by file type specific settings.
 {
-	// List any packages to ignore here. When removing entries from this list,
-    // a restart may be required if the package contains plugins.
-    // "ignored_packages": ["Vintage"]
-    "ignored_packages": [""]
+	// tab settings
+	"tab_size": 2,
+	"detect_indentation": true,
+
+	// stop buffer tabs from collapsing horizontally
+	"enable_tab_scrolling": false,
+
+	// enable vintage mode
+	// "ignored_packages": ["Vintage"]
+	"ignored_packages": [""],
 }
