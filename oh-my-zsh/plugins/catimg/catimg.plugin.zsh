@@ -1,17 +1,19 @@
 ################################################################################
 # catimg script by Eduardo San Martin Morote aka Posva                         #
-# http://posva.net                                                             #
+# https://posva.net                                                            #
 #                                                                              #
-# Ouput the content of an image to the stdout using the 256 colors of the      #
+# Output the content of an image to the stdout using the 256 colors of the     #
 # terminal.                                                                    #
-# Github: https://github.com/posva/catimg                                      #
+# GitHub: https://github.com/posva/catimg                                      #
 ################################################################################
 
 
 function catimg() {
-  if [[ -x  `which convert` ]]; then
-    zsh $ZSH/plugins/catimg/catimg.sh $@
+  if (( $+commands[magick] )); then
+    CONVERT_CMD="magick" zsh $ZSH/plugins/catimg/catimg.sh $@
+  elif (( $+commands[convert] )); then
+    CONVERT_CMD="convert" zsh $ZSH/plugins/catimg/catimg.sh $@
   else
-    echo "catimg need convert (ImageMagick) to work)"
+    echo "catimg need magick/convert (ImageMagick) to work)"
   fi
 }

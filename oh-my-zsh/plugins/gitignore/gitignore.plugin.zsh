@@ -1,7 +1,7 @@
-function gi() { curl -sL https://www.gitignore.io/api/$@ ;}
+function gi() { curl -fLw '\n' https://www.toptal.com/developers/gitignore/api/"${(j:,:)@}" }
 
 _gitignoreio_get_command_list() {
-  curl -sL https://www.gitignore.io/api/list | tr "," "\n"
+  curl -sfL https://www.toptal.com/developers/gitignore/api/list | tr "," "\n"
 }
 
 _gitignoreio () {

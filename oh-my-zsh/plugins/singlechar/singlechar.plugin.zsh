@@ -1,15 +1,5 @@
-################################################################################
-#          FILE:  singlechar.plugin.zsh
-#   DESCRIPTION:  oh-my-zsh plugin file.
-#        AUTHOR:  Michael Varner (musikmichael@web.de)
-#       VERSION:  1.0.0
-#
-# This plugin adds single char shortcuts (and combinations) for some commands.
-#
-################################################################################
-
 ###########################
-# Settings 
+# Settings
 
 # These can be overwritten any time.
 # If they are not set yet, they will be

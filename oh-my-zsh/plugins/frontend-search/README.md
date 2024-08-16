@@ -1,82 +1,85 @@
-## Rationale ##
+## Introduction
 
-The idea for this script is to help searches in important doc contents from frontend.
+> Searches for your frontend web development made easier
 
-## Instalation ##
+## Installation
 
-I will send a Pull Request with this plugin for .oh-my-zsh official repository. If accept them, it's only add in plugins list that exists in ```.zshrc``` file.
+Open your `~/.zshrc` file and enable the `frontend-search` plugin:
 
-For now, you can clone this repository and add in ```custom/plugins``` folder
+```zsh
 
-```bash
-$ git clone git://github.com/willmendesneto/frontend-search.git ~/.oh-my-zsh/custom/plugins/frontend-search
+plugins=( ... frontend-search)
+
 ```
 
-After this, restart your terminal and frontend-search plugin is configurated in you CLI.
+## Usage
 
-```bash
-...
-plugins=( <your-plugins-list>... frontend-search)
-...
+You can use the frontend-search plugin in these two forms:
+
+- `frontend <context> <term> [more terms if you want]`
+- `<context> <term> [more terms if you want]`
+
+For example, these two are equivalent:
+
+```zsh
+$ angular dependency injection
+# Will turn into ...
+$ frontend angular dependency injection
 ```
 
-## Commands ##
+Available search contexts are:
 
-All command searches are accept only in format
+| context       | URL                                                                         |
+| ------------- | --------------------------------------------------------------------------- |
+| angular       | `https://angular.io/?search=`                                               |
+| angularjs     | `https://google.com/search?as_sitesearch=angularjs.org&as_q=`               |
+| bem           | `https://google.com/search?as_sitesearch=bem.info&as_q=`                    |
+| bootsnipp     | `https://bootsnipp.com/search?q=`                                           |
+| bundlephobia  | `https://bundlephobia.com/result?p=`                                        |
+| caniuse       | `https://caniuse.com/#search=`                                              |
+| codepen       | `https://codepen.io/search?q=`                                              |
+| compassdoc    | `http://compass-style.org/search?q=`                                        |
+| cssflow       | `http://www.cssflow.com/search?q=`                                          |
+| dartlang      | `https://api.dartlang.org/apidocs/channels/stable/dartdoc-viewer/dart:`     |
+| emberjs       | `https://www.google.com/search?as_sitesearch=emberjs.com/&as_q=`            |
+| flowtype      | `https://google.com/search?as_sitesearch=flow.org/en/docs/&as_q=`           |
+| fontello      | `http://fontello.com/#search=`                                              |
+| github        | `https://github.com/search?q=`                                              |
+| html5please   | `https://html5please.com/#`                                                 |
+| jestjs        | `https://www.google.com/search?as_sitesearch=jestjs.io&as_q=`               |
+| jquery        | `https://api.jquery.com/?s=`                                                |
+| lodash        | `https://devdocs.io/lodash/index#`                                          |
+| mdn           | `https://developer.mozilla.org/search?q=`                                   |
+| nodejs        | `https://www.google.com/search?as_sitesearch=nodejs.org/en/docs/&as_q=`     |
+| npmjs         | `https://www.npmjs.com/search?q=`                                           |
+| packagephobia | `https://packagephobia.now.sh/result?p=`                                    |
+| qunit         | `https://api.qunitjs.com/?s=`                                               |
+| reactjs       | `https://google.com/search?as_sitesearch=facebook.github.io/react&as_q=`    |
+| smacss        | `https://google.com/search?as_sitesearch=smacss.com&as_q=`                  |
+| stackoverflow | `https://stackoverflow.com/search?q=`                                       |
+| typescript    | `https://google.com/search?as_sitesearch=www.typescriptlang.org/docs&as_q=` |
+| unheap        | `http://www.unheap.com/?s=`                                                 |
+| vuejs         | `https://www.google.com/search?as_sitesearch=vuejs.org&as_q=`               |
+| nextjs        | `https://www.google.com/search?as_sitesearch=nextjs.org&as_q=`              |
 
-* `frontend <search-content> <search-term>`
+If you want to have another context, open an Issue and tell us!
 
-The search content are
+## Fallback search behaviour
 
-* `jquery <api.jquery.com>`
-* `mdn <developer.mozilla.org>`
-* `compass <compass-style.org>`
-* `html5please <html5please.com>`
-* `caniuse <caniuse.com>`
-* `aurajs <aurajs.com>`
-* `dartlang <api.dartlang.org/apidocs/channels/stable/dartdoc-viewer>`
-* `lodash <search>`
-* `qunit <api.qunitjs.com>`
-* `fontello <fontello.com>`
-* `bootsnipp <bootsnipp.com>`
-* `cssflow <cssflow.com>`
-* `codepen <codepen.io>`
-* `unheap <www.unheap.com>`
-* `bem <google.com/search?as_q=<search-term>&as_sitesearch=bem.info>`
-* `smacss <google.com/search?as_q=<search-term>&as_sitesearch=smacss.com>`
-* `angularjs <google.com/search?as_q=<search-term>&as_sitesearch=angularjs.org>`
-* `reactjs <google.com/search?as_q=<search-term>&as_sitesearch=facebook.github.io/react>`
-* `emberjs <emberjs.com>`
+The plugin will use Google as a fallback if the docs site for a search context does not have a search
+function. You can set the fallback search engine to DuckDuckGo by setting
+`FRONTEND_SEARCH_FALLBACK='duckduckgo'` in your `~/.zshrc` file before Oh My Zsh is sourced.
 
+## DuckDuckGo Lucky Search
 
-## Aliases ##
-
-There are a few aliases presented as well:
-
-* `jquery` A shorthand for `frontend jquery`
-* `mdn` A shorthand for `frontend mdn`
-* `compass` A shorthand for `frontend compass`
-* `html5please` A shorthand for `frontend html5please`
-* `caniuse` A shorthand for `frontend caniuse`
-* `aurajs` A shorthand for `frontend aurajs`
-* `dartlang` A shorthand for `frontend dartlang`
-* `lodash` A shorthand for `frontend lodash`
-* `qunit` A shorthand for `frontend qunit`
-* `fontello` A shorthand for `frontend fontello`
-* `bootsnipp` A shorthand for `frontend bootsnipp`
-* `cssflow` A shorthand for `frontend cssflow`
-* `codepen` A shorthand for `frontend codepen`
-* `unheap` A shorthand for `frontend unheap`
-* `bem` A shorthand for `frontend bem`
-* `smacss` A shorthand for `frontend smacss`
-* `angularjs` A shorthand for `frontend angularjs`
-* `reactjs` A shorthand for `frontend reactjs`
-* `emberjs` A shorthand for `frontend emberjs`
+Enable DuckDuckGo's "ducky" (lucky) search feature to automatically access the top search result. This feature
+is optimized for DuckDuckGo, as Google redirects to an intermediate page. The FRONTEND_SEARCH_FALLBACK_LUCKY
+environment variable triggers the use of DuckDuckGo's lucky search, rendering the FRONTEND_SEARCH_FALLBACK
+setting unnecessary in this context.
 
 ## Author
 
 **Wilson Mendes (willmendesneto)**
-+ <https://twitter.com/willmendesneto>
-+ <http://github.com/willmendesneto>
 
-New features comming soon.
+- <https://twitter.com/willmendesneto>
+- <https://github.com/willmendesneto>
